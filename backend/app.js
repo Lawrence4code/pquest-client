@@ -11,7 +11,7 @@ const app = express();
 
 
 // connection to DB
-mongoose.connect('mongodb+srv://@cluster0-ljsay.mongodb.net/mean-project?retryWrites=true&w=majority',  { useNewUrlParser: true })
+mongoose.connect(`mongodb+srv://lawrence:${process.env.MONGO_ATLAS_PW}@cluster0-ljsay.mongodb.net/mean-project?retryWrites=true&w=majority`,  { useNewUrlParser: true })
     .then(() => {
         console.log('Connect to remote db successfully');
     })

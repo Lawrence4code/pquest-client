@@ -60,7 +60,7 @@ export class PostsService {
       content: string;
       imagePath: string;
       author: string;
-    }>(`${BACKEND_URL}${id}`);
+    }>(`${BACKEND_URL}/${id}`);
   }
 
   deletePost(postId: string) {
@@ -99,7 +99,7 @@ export class PostsService {
       };
     }
     this.httpClientService
-      .put(`${BACKEND_URL}${id}`, postData)
+      .put(`${BACKEND_URL}/${id}`, postData)
       .subscribe(res => {
         this.router.navigate(["/"]);
       });

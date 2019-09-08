@@ -63,7 +63,9 @@ exports.getAllPosts = (req, res, next) => {
         postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
     }
     postQuery.then((documents) => {
+        console.log(documents)
         fetchedPosts = documents;
+
         return Post.countDocuments();
     }).then(count => {
         res.status(200).send({

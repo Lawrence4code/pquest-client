@@ -1,6 +1,7 @@
 <mat-card>
     <mat-spinner *ngIf="isLoading"> </mat-spinner>
     <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
+        <h2> Please signup to upload photos and to create posts.</h2>
         <mat-form-field>
             <input matInput name="email" ngModel type="email" placeholder="Email" #emailInput='ngModel' required email>
             <mat-error *ngIf="emailInput.invalid">Please enter email here...</mat-error>
@@ -9,6 +10,8 @@
             <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
             <mat-error *ngIf="passwordInput.invalid"> Please enter valid password! </mat-error>
         </mat-form-field>
-        <button mat-raised-button color='accent' type="submit" *ngIf="!isLoading">Save Post</button>
+        <button mat-raised-button color='primary' type="submit" *ngIf="!isLoading">Sign up</button>
+        <a mat-button routerLink="/auth/login" routerLinkActive="active-button"> Already Registered </a>
+        <p> Note: If just wanna test and explore app, please use email: demo@yopmail.com and password: demo123 </p>
     </form>
 </mat-card>

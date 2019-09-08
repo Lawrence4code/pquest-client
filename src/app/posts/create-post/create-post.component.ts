@@ -6,6 +6,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { mimeType } from './mime-type.validator';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 
 @Component({
@@ -20,18 +21,19 @@ export class CreatePostComponent implements OnInit, OnDestroy {
     post: Post;
     private mode = "create"
     private postId: string = "";
-    isLoading = false;
     form: FormGroup;
-    imagePreview: any;
+    imagePreview: any = "";
     private authStatusSubs: Subscription;
 
-    constructor(public postsService: PostsService, private activatedRoute: ActivatedRoute,private authService: AuthService ) {
+    constructor(public postsService: PostsService,
+        private activatedRoute: ActivatedRoute,
+        private authService: AuthService,
+        private ngxLoader: NgxUiLoaderService ) {
 
     }
 
     ngOnInit() {
         this.authStatusSubs = this.authService.getAuthStatusListener().subscribe( authService => {
-            this.isLoading = false;
         })
         this.form = new FormGroup({
             'title': new FormControl(null, { validators: [Validators.required, Validators.minLength(3)]}),
@@ -42,9 +44,7 @@ export class CreatePostComponent implements OnInit, OnDestroy {
             if(paramMap.has('postId')) {
                 this.mode = 'edit';
                 this.postId = paramMap.get('postId');
-                this.isLoading = true;
                 this.postsService.getPost(this.postId).subscribe(postData => {
-                    this.isLoading = false;
                     this.post = { id: postData._id, title: postData.title, content: postData.content, imagePath: postData.imagePath, author: postData.author};
                     this.form.setValue({ 'title': this.post.title, 'content': this.post.content, image: this.post.imagePath });
                 });
@@ -70,12 +70,13 @@ export class CreatePostComponent implements OnInit, OnDestroy {
         if(this.form.invalid) {
             return;
         }
-        this.isLoading = true;
+        this.ngxLoader.start()
         if(this.mode === "create") {
             this.postsService.addPost(this.form.value.title,this.form.value.content, this.form.value.image);
         } else {
             this.postsService.updatePost(this.postId, this.form.value.title, this.form.value.content, this.form.value.image);
         }
+        this.ngxLoader.stop();
         this.form.reset();
     }
 

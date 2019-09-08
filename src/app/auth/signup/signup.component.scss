@@ -6,3 +6,30 @@ mat-spinner {
     width: auto;
     margin: 0 auto;
 };
+
+mat-card {
+    width: 35%;
+    margin: 4rem auto;
+}
+
+form h2 {
+    color: rgb(80, 80, 80);
+    margin-bottom: 2rem;
+}
+
+form p {
+    color: rgb(80, 80, 80);
+    font-size: .9rem;
+}
+
+form a {
+    margin-left: 1rem;
+    border: 1px grey solid;
+}
+form button {
+    margin: 1.5rem 0 1rem 0;
+}
+
+form {
+    padding: 0 2rem;
+}

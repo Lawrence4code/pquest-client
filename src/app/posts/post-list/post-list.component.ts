@@ -4,6 +4,8 @@ import { PostsService } from '../posts.service';
 import { Subscription } from 'rxjs';
 import { PageEvent } from '@angular/material';
 import { AuthService } from 'src/app/auth/auth.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import {  MatDialogRef, MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-post-list',
@@ -13,7 +15,6 @@ import { AuthService } from 'src/app/auth/auth.service';
 export class PostListComponent implements OnInit {
   posts: Post[] = [];
   private postsSub: Subscription;
-  isLoading = false;
   totalPost = 0;
   postsPerPage = 2;
   pageSizeOption = [1, 2, 5, 10];
@@ -23,16 +24,17 @@ export class PostListComponent implements OnInit {
   userIsAuthenticated = false;
 
 
-  constructor(public postsService: PostsService, private authService: AuthService) { }
+  constructor(public postsService: PostsService, private authService: AuthService, private ngxLoader: NgxUiLoaderService,private dialog: MatDialog) { }
 
   ngOnInit() {
-    this.isLoading = true;
+    this.ngxLoader.start();
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
     this.userId = this.authService.getUserId();
+    this.ngxLoader.stop();
     this.postsSub = this.postsService.getPostUpdateListener().subscribe((postData : {posts: Post[], postCount: number}) => {
-      this.isLoading = false;
+
       this.totalPost = postData.postCount;
-      this.posts = postData.posts;
+      this.posts = postData.posts.reverse();
     });
     this.userIsAuthenticated = this.authService.getAuthStatus();
     this.authStatusSubs = this.authService.getAuthStatusListener().subscribe( isAuthenticated => {
@@ -43,19 +45,21 @@ export class PostListComponent implements OnInit {
 
   onDelete(postId:string) {
     this.postsService.deletePost(postId).subscribe(() => {
-      this.isLoading = true;
+      this.ngxLoader.start();
       this.postsService.getPosts(this.postsPerPage, this.currentPage);
+      this.ngxLoader.stop();
     }, () => {
-      this.isLoading = false;
+      this.ngxLoader.stop();
     })
   }
 
 
   onChangePage(pageData: PageEvent) {
-    this.isLoading = true;
+    this.ngxLoader.start();
     this.currentPage = pageData.pageIndex + 1;
     this.postsPerPage = pageData.pageSize;
     this.postsService.getPosts(this.postsPerPage, this.currentPage);
+    this.ngxLoader.stop();
   }
 
   ngOnDestroy() {

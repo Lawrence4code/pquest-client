@@ -9,3 +9,43 @@ ul {
     margin: 0;
     display: flex;
 }
+
+.logo__section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer
+}
+
+.logo__section img {
+    height: 47.5px;
+}
+
+.logo__section h1 {
+    color: rgb(37, 66, 129);
+    margin-left: 1rem;
+    font-size: 1.75rem;
+}
+
+.menu__action-bottons {
+    color: whitesmoke;
+}
+
+.active-button {
+    color: rgb(255, 132, 132);
+    font-size: 17px;
+}
+
+
+
+.mat-toolbar {
+    background-color: #7986cb !important;
+}
+
+.menu__action-bottons {
+    margin-left: auto;
+}
+
+.menu__logout-botton {
+    color: rgb(82, 82, 82);
+}

@@ -12,12 +12,16 @@ import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { PostsModule } from './posts/posts.module';
+import { MessageComponent } from './message/message.component';
+import { PostModalComponent } from './post-modal/post-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ErrorComponent
+    ErrorComponent,
+    MessageComponent,
+    PostModalComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +36,6 @@ import { PostsModule } from './posts/posts.module';
     {  provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
-  entryComponents: [ErrorComponent]
+  entryComponents: [ErrorComponent, MessageComponent, PostModalComponent]
 })
 export class AppModule { }

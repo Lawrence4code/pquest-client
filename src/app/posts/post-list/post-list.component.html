@@ -3,13 +3,17 @@
 <ngx-ui-loader></ngx-ui-loader>
 <mat-accordion *ngIf="posts.length > 0 && !isLoading">
     <mat-expansion-panel class="post__card" *ngFor="let post of posts">
-        <mat-expansion-panel-header>
-            <h3>{{post.title}}</h3>
+        <mat-expansion-panel-header class="post__title">
+                <h3>{{post.title}}</h3>
+                <p><span class='post__author'> Author: {{post.authorName }} </span> <span class='post__time'> Created: {{post.createdAt | amTimeAgo  }}</span> </p>
         </mat-expansion-panel-header>
-        <div class='post-image'>
-            <img [src]="post.imagePath" [alt]="post.title">
+        <div class="post__body">
+                <div class='post-image'>
+                        <img [src]="post.imagePath" (click)="openDialog(post)" [alt]="post.title">
+                    </div>
+                    <p class="post__text"> {{post.content}} </p>
         </div>
-        <p> {{post.content}} </p>
+
         <mat-action-row *ngIf='userIsAuthenticated && userId === post.author'>
 
             <a mat-button color="primary" [routerLink]="['/edit', post.id]"> EDIT </a>

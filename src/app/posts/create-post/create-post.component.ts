@@ -37,7 +37,7 @@ export class CreatePostComponent implements OnInit, OnDestroy {
         })
         this.form = new FormGroup({
             'title': new FormControl(null, { validators: [Validators.required, Validators.minLength(3)]}),
-            'content': new FormControl(null, { validators: [Validators.required, Validators.maxLength(50)]}),
+            'content': new FormControl(null, { validators: [Validators.required, Validators.maxLength(800)]}),
             'image': new FormControl(null, { validators: [Validators.required], asyncValidators: [mimeType]})
         })
         this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
@@ -45,7 +45,8 @@ export class CreatePostComponent implements OnInit, OnDestroy {
                 this.mode = 'edit';
                 this.postId = paramMap.get('postId');
                 this.postsService.getPost(this.postId).subscribe(postData => {
-                    this.post = { id: postData._id, title: postData.title, content: postData.content, imagePath: postData.imagePath, author: postData.author};
+                    console.log('postData', postData)
+                    this.post = { id: postData._id, title: postData.title, content: postData.content, imagePath: postData.imagePath, author: postData.author, authorName: postData.authorName};
                     this.form.setValue({ 'title': this.post.title, 'content': this.post.content, image: this.post.imagePath });
                 });
             } else {

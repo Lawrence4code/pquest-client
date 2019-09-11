@@ -6,6 +6,8 @@ import { Subject } from "rxjs";
 import { Router } from "@angular/router";
 
 import { environment } from "../../environments/environment";
+import { MatDialog } from '@angular/material';
+import { MessageComponent } from '../message/message.component';
 
 const BACKEND_URL = `${environment.apiURL}/user`;
 
@@ -18,7 +20,7 @@ export class AuthService {
   private authStatusListener = new Subject<boolean>();
   private tokenTimer: any;
   private userId: string;
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private httpClient: HttpClient, private router: Router, public dialog: MatDialog ) {}
 
   getToken() {
     return this.token;
@@ -36,18 +38,31 @@ export class AuthService {
     return this.userId;
   }
 
-  createUser(email: string, password: string) {
-    const authData: AuthData = { email: email, password: password };
+  createUser(name: string, email: string, password: string) {
+    const authData: AuthData = { name: name, email: email, password: password };
+    console.log('AuthData', authData)
     return this.httpClient
       .post(`${BACKEND_URL}/signup`, authData)
       .subscribe(
         () => {
           this.router.navigate(["/"]);
+          this.openDialog()
         },
         error => {
           this.authStatusListener.next(false);
         }
       );
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(MessageComponent, {
+      width: '250px',
+      data: { message: 'Sign up successful, please login to start posting stuffs.'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   autoAuthUser() {
@@ -67,8 +82,8 @@ export class AuthService {
     }
   }
 
-  login(email: string, password: string) {
-    const authData: AuthData = { email: email, password: password };
+  login(name: string, email: string, password: string) {
+    const authData: AuthData = { name: name, email: email, password: password };
     this.httpClient
       .post<{
         message: string;

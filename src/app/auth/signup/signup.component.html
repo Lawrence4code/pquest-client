@@ -3,11 +3,16 @@
     <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
         <h2> Please signup to upload photos and to create posts.</h2>
         <mat-form-field>
+            <input matInput name="name" ngModel type="text" placeholder="Your Name" #nameInput='ngModel' required >
+            <mat-error *ngIf="nameInput.invalid"> Enter your name </mat-error>
+            </mat-form-field>
+        <mat-form-field>
             <input matInput name="email" ngModel type="email" placeholder="Email" #emailInput='ngModel' required email>
             <mat-error *ngIf="emailInput.invalid">Please enter email here...</mat-error>
         </mat-form-field>
         <mat-form-field>
-            <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel" required>
+            <input type="password" name="password" ngModel matInput placeholder="Password" #passwordInput="ngModel"
+                required>
             <mat-error *ngIf="passwordInput.invalid"> Please enter valid password! </mat-error>
         </mat-form-field>
         <button mat-raised-button color='primary' type="submit" *ngIf="!isLoading">Sign up</button>

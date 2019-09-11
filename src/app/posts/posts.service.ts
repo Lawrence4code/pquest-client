@@ -33,7 +33,9 @@ export class PostsService {
                 content: post.content,
                 id: post._id,
                 imagePath: post.imagePath,
-                author: post.author
+                author: post.author,
+                authorName: post.authorName,
+                createdAt: post.created_at
               };
             }),
             maxPosts: postsData.maxPosts
@@ -60,6 +62,8 @@ export class PostsService {
       content: string;
       imagePath: string;
       author: string;
+      authorName: string;
+      created_at: Date;
     }>(`${BACKEND_URL}/${id}`);
   }
 
@@ -82,7 +86,7 @@ export class PostsService {
   }
 
   updatePost(id: string, title: string, content: string, image: File | string) {
-    let postData: Post | FormData;
+    let postData;
     if (typeof image === "object") {
       postData = new FormData();
       postData.append("id", id);
@@ -95,7 +99,8 @@ export class PostsService {
         title: title,
         content: content,
         imagePath: image,
-        author: null
+        author: null,
+
       };
     }
     this.httpClientService

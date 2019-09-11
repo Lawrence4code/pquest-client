@@ -18,6 +18,6 @@ import { AuthRoutingModule } from './auth-routing.module';
     AngularMaterialModule,
     FormsModule,
     AuthRoutingModule
-  ]
+  ],
 })
 export class AuthModule { }

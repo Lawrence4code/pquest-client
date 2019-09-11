@@ -3,5 +3,6 @@ export interface Post {
     title: string,
     content: string,
     imagePath: string,
-    author: string
+    author: string,
+    authorName: string,
 }

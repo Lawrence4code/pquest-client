@@ -9,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material';
 import { NgxUiLoaderModule } from  'ngx-ui-loader';
 import {MatDialogModule} from '@angular/material/dialog';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     RouterModule,
     MatIconModule,
     NgxUiLoaderModule,
-    MatDialogModule
+    MatDialogModule,
+    MomentModule
   ]
 })
 export class PostsModule { }

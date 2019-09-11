@@ -3,11 +3,13 @@ const Post = require('../models/post');
 // create post logic
 exports.createPost = (req, res, next) => {
     const url = req.protocol + '://' + req.get('host');
+    console.log('reqreqreqreqreqreqreq', req.userData)
     const post = new Post({
         title: req.body.title,
         content: req.body.content,
         imagePath: url + "/images/" + req.file.filename,
-        author: req.userData.userId
+        author: req.userData.userId,
+        authorName: req.userData.userName
     });
     post.save()
     .then(createdPost => {
@@ -21,6 +23,7 @@ exports.createPost = (req, res, next) => {
         });
     })
     .catch(error => {
+        console.log('errorerrorerrorerrorerror', error)
         res.status(500).json({ message: 'Unable to add the post! '})
     })
 }
@@ -63,11 +66,10 @@ exports.getAllPosts = (req, res, next) => {
         postQuery.skip(pageSize * (currentPage - 1)).limit(pageSize);
     }
     postQuery.then((documents) => {
-        console.log(documents)
         fetchedPosts = documents;
-
         return Post.countDocuments();
     }).then(count => {
+        console.log('fetchedPosts', fetchedPosts)
         res.status(200).send({
             message: "Fetched posts succcessfully",
             posts: fetchedPosts,

@@ -39,13 +39,19 @@ mat-expansion-panel-header {
     color: rgb(75, 75, 189);
 }
 
-.post-image img {
-    max-width: 500px;
-}
 
 .post-image {
-    text-align: center;
+    width: 42% !important;
+    & img {
+        max-width: 500px;
+    }
 }
+
+.post__text {
+    margin: 0 1rem;
+}
+
+
 
 .mat-paginator {
     width: 100%;
@@ -53,6 +59,39 @@ mat-expansion-panel-header {
     border-radius: 3px;
 }
 
-.mat-select-value {
-    text-align: center !important;
+
+
+.post__title {
+    display: flex;
+    align-items: center;
+    position: relative;
+    & h3 {
+        margin-right: auto;
+    }
+    & p {
+        margin-right: 1.5rem;
+        position: absolute;
+        top: .2rem;
+        right: 5%;
+        & .post__author {
+            margin-right: .5rem;
+            font-weight: 500;
+            color: #000;
+        }
+
+        & .post__time {
+            color: grey;
+            font-weight: 300;
+        }
+    }
+
+    & span {
+        align-items: center !important;
+
+
+    }
+}
+
+.post__body {
+    display: flex;
 }

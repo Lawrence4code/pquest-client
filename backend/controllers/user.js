@@ -4,9 +4,11 @@ const jwt = require('jsonwebtoken');
 const  User = require('../models/user');
 
 exports.createUser = (req, res, next) => {
+    console.log('req', req.body);
     bcrypt.hash(req.body.password, 10 )
     .then( hash => {
         const user  = new User( {
+            name: req.body.name,
             email: req.body.email,
             password: hash
         })
@@ -15,6 +17,7 @@ exports.createUser = (req, res, next) => {
             res.status(201).json({ message: 'User created Sucessfully', result: result });
         })
         .catch((err) => {
+            console.log('err', err);
             res.status(500).json({
                 message: 'Invalid authentication creditials!'
             })
@@ -29,12 +32,13 @@ exports.userLogin =  (req, res, next) => {
             return res.status(401).json({ message: 'User does not exist!'})
         }
         fetchedUser = user;
+        console.log('fetchedUser', fetchedUser);
         return bcrypt.compare(req.body.password, user.password)
     }).then(result => {
         if(!result) {
             return res.status(401).json({ message: 'Incorrect Password!'})
         }
-        const token = jwt.sign({ email: fetchedUser.email, userId: fetchedUser._id },
+        const token = jwt.sign({ email: fetchedUser.email, userId: fetchedUser._id, name: fetchedUser.name },
             process.env.JWT_KEY,
             { expiresIn: '100h'});
         

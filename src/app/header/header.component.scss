@@ -1,51 +1,49 @@
 a {
-    text-decoration: none;
-    color: whitesmoke;
+  text-decoration: none;
+  color: whitesmoke;
 }
 
 ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
 }
 
 .logo__section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
 
 .logo__section img {
-    height: 47.5px;
+  height: 47.5px;
 }
 
 .logo__section h1 {
-    color: rgb(37, 66, 129);
-    margin-left: 1rem;
-    font-size: 1.75rem;
+  color: rgb(37, 66, 129);
+  margin-left: 1rem;
+  font-size: 1.75rem;
 }
 
 .menu__action-bottons {
-    color: whitesmoke;
+  color: whitesmoke;
 }
 
 .active-button {
-    color: rgb(255, 132, 132);
-    font-size: 17px;
+  color: rgb(255, 132, 132);
+  font-size: 17px;
 }
 
-
-
 .mat-toolbar {
-    background-color: #7986cb !important;
+  background-color: #7986cb !important;
 }
 
 .menu__action-bottons {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .menu__logout-botton {
-    color: rgb(82, 82, 82);
+  color: rgb(82, 82, 82);
 }

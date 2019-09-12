@@ -1,8 +1,8 @@
 export interface Post {
-    id: string,
-    title: string,
-    content: string,
-    imagePath: string,
-    author: string,
-    authorName: string,
+  id: string;
+  title: string;
+  content: string;
+  imagePath: string;
+  author: string;
+  authorName: string;
 }

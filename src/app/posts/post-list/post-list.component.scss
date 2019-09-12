@@ -1,97 +1,89 @@
 :host {
-    display: block;
-    padding-top: 3rem;
+  display: block;
+  padding-top: 3rem;
 }
 
 .info-text {
-    text-align: center;
+  text-align: center;
 }
 
 mat-spinner {
-    width: auto;
-    margin: 0 auto;
+  width: auto;
+  margin: 0 auto;
 }
 
 .post-image {
-    width: 100%;
+  width: 100%;
 }
 
 .post-image img {
-    width: 100%;
-    box-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+  width: 100%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
 }
 
 mat-paginator {
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .post-list {
-    width: 70%;
-    margin: 0 auto 10rem auto;
+  width: 70%;
+  margin: 0 auto 10rem auto;
 }
 
 .post__card {
-    background-color: rgb(248, 248, 248);
-  
+  background-color: rgb(248, 248, 248);
 }
 
 mat-expansion-panel-header {
-    color: rgb(75, 75, 189);
+  color: rgb(75, 75, 189);
 }
 
-
 .post-image {
-    width: 42% !important;
-    & img {
-        max-width: 500px;
-    }
+  width: 42% !important;
+  & img {
+    max-width: 500px;
+  }
 }
 
 .post__text {
-    margin: 0 1rem;
+  margin: 0 1rem;
 }
-
-
 
 .mat-paginator {
-    width: 100%;
-    background-color: #d1d5ee;
-    border-radius: 3px;
+  width: 100%;
+  background-color: #d1d5ee;
+  border-radius: 3px;
 }
 
-
-
 .post__title {
-    display: flex;
-    align-items: center;
-    position: relative;
-    & h3 {
-        margin-right: auto;
-    }
-    & p {
-        margin-right: 1.5rem;
-        position: absolute;
-        top: .2rem;
-        right: 5%;
-        & .post__author {
-            margin-right: .5rem;
-            font-weight: 500;
-            color: #000;
-        }
-
-        & .post__time {
-            color: grey;
-            font-weight: 300;
-        }
+  display: flex;
+  align-items: center;
+  position: relative;
+  & h3 {
+    margin-right: auto;
+  }
+  & p {
+    margin-right: 1.5rem;
+    position: absolute;
+    top: 0.2rem;
+    right: 5%;
+    & .post__author {
+      margin-right: 0.5rem;
+      font-weight: 500;
+      color: #000;
     }
 
-    & span {
-        align-items: center !important;
-
-
+    & .post__time {
+      color: grey;
+      font-weight: 300;
     }
+  }
+
+  & span {
+    align-items: center !important;
+  }
 }
 
 .post__body {
-    display: flex;
+  display: flex;
 }

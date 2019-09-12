@@ -50,5 +50,5 @@ const server = http.createServer(app);
 server.on("error", onError);
 server.on("listening", onListening);
 server.listen(port, () => {
-    console.log(`Server started at port ${port}.`);
+  console.log(`Server started at port ${port}.`);
 });

@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
 import { map } from "rxjs/operators";
 import { Router } from "@angular/router";
 
-import { environment } from '../../environments/environment'
+import { environment } from "../../environments/environment";
 
 const BACKEND_URL = `${environment.apiURL}/posts`;
 
@@ -99,8 +99,7 @@ export class PostsService {
         title: title,
         content: content,
         imagePath: image,
-        author: null,
-
+        author: null
       };
     }
     this.httpClientService

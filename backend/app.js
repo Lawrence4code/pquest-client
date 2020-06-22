@@ -13,7 +13,7 @@ const app = express();
 mongoose
   .connect(
     `mongodb+srv://lawrence:UF6mc1seQupQloUC@cluster0-qn38b.mongodb.net/test?retryWrites=true&w=majority`,
-    { useUnifiedTopology: true }
+    { useUnifiedTopology: true, useNewUrlParser: true }
   )
   .then(() => {
     console.log("Connect to remote db successfully");
@@ -22,6 +22,12 @@ mongoose
     console.log("Connection to db failed!", err);
   });
 
+// mongoose depcreation warning, remove in prod verison
+
+//TODO:
+mongoose.set('useCreateIndex', true);
+
+mongoose.set('useFindAndModify', false);
 // middleware to allow cors
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");

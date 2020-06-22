@@ -22,9 +22,13 @@ ul {
 }
 
 .logo__section h1 {
-  color: rgb(37, 66, 129);
+  color: whitesmoke;
   margin-left: 1rem;
-  font-size: 1.75rem;
+  font-size: 2rem;
+  font-family: 'Josefin Sans', sans-serif;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding-top: 5px;
 }
 
 .menu__action-bottons {
@@ -37,7 +41,7 @@ ul {
 }
 
 .mat-toolbar {
-  background-color: #7986cb !important;
+  background-color: #4d60bd !important;
 }
 
 .menu__action-bottons {

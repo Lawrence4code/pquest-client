@@ -1,6 +1,6 @@
 <mat-card>
     <ngx-ui-loader></ngx-ui-loader>
-    <form [formGroup]="form" (submit)="onSavePost()" *ngIf="!isLoading">
+    <form [formGroup]="form" (submit)="onSavePost()">
         <mat-form-field>
             <input matInput type="text" name='title' formControlName='title' placeholder="Post title here...">
             <mat-error *ngIf="form.get('title').invalid">

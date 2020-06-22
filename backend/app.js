@@ -12,8 +12,8 @@ const app = express();
 // connection to DB
 mongoose
   .connect(
-    `mongodb+srv://lawrence:${process.env.MONGO_ATLAS_PW}@cluster0-ljsay.mongodb.net/mean-project?retryWrites=true&w=majority`,
-    { useNewUrlParser: true }
+    `mongodb+srv://lawrence:UF6mc1seQupQloUC@cluster0-qn38b.mongodb.net/test?retryWrites=true&w=majority`,
+    { useUnifiedTopology: true }
   )
   .then(() => {
     console.log("Connect to remote db successfully");
@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 // middleware to make request readble
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use("/images", express.static(path.join("backend/images")));
+app.use("/images", express.static(path.join("images")));
 
 app.use("/api/posts", postsRoutes);
 app.use("/api/user", userRoutes);

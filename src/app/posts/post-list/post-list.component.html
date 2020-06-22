@@ -1,7 +1,7 @@
 <div class="post-list" layout="row">
     <!-- Loader here -->
     <ngx-ui-loader></ngx-ui-loader>
-    <mat-accordion *ngIf="posts.length > 0 && !isLoading">
+    <mat-accordion *ngIf="posts.length > 0">
         <mat-expansion-panel class="post__card" *ngFor="let post of posts">
             <mat-expansion-panel-header class="post__title">
                 <h3>{{post.title}}</h3>
@@ -25,5 +25,5 @@
 
     <mat-paginator [length]='totalPost' [pageSize]='postsPerPage' [pageSizeOptions]='pageSizeOption'
         (page)="onChangePage($event)" *ngIf="posts.length > 0"></mat-paginator>
-    <p class="info-text mat-body1" *ngIf="posts.length <= 0 && !isLoading"> No post added yet! </p>
+    <p class="info-text mat-body1" *ngIf="posts.length <= 0" > No post added yet! </p>
 </div>

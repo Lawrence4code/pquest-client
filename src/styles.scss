@@ -1,9 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Open Sans', "Helvetica Neue", sans-serif; background-color: #aab6fe !important; }
-button, .mat-raised-button { font-family: 'Open Sans' };
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  background-color: #aab6fe !important;
+  height: 100vh;
+}
+button,
+.mat-raised-button {
+  font-family: "Open Sans";
+}
 
 .mat-select-value {
-    text-align: center !important;
+  text-align: center !important;
 }

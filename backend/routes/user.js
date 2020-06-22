@@ -1,5 +1,7 @@
 const express = require("express");
 
+console.log('running')
+
 const UserController = require("../controllers/user");
 
 // router instance

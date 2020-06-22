@@ -25,10 +25,14 @@ ul {
   color: whitesmoke;
   margin-left: 1rem;
   font-size: 2rem;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   letter-spacing: 1px;
   font-weight: 600;
   padding-top: 5px;
+}
+
+.logout {
+  color: whitesmoke;
 }
 
 .menu__action-bottons {
@@ -49,5 +53,5 @@ ul {
 }
 
 .menu__logout-botton {
-  color: rgb(82, 82, 82);
+  color: whitesmoke;
 }

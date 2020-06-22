@@ -4,9 +4,11 @@ import { Routes, RouterModule } from "@angular/router";
 import { PostListComponent } from "./posts/post-list/post-list.component";
 import { CreatePostComponent } from "./posts/create-post/create-post.component";
 import { AuthGuard } from "./auth/auth.guard";
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const routes: Routes = [
-  { path: "", component: PostListComponent },
+  { path: "", component: LandingPageComponent },
+  { path: "posts", component: PostListComponent },
   { path: "create", component: CreatePostComponent, canActivate: [AuthGuard] },
   {
     path: "edit/:postId",
@@ -21,4 +23,4 @@ const routes: Routes = [
   exports: [RouterModule],
   providers: [AuthGuard]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

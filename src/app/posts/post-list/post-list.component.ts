@@ -30,7 +30,7 @@ export class PostListComponent implements OnInit {
     private authService: AuthService,
     private ngxLoader: NgxUiLoaderService,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.ngxLoader.start();
@@ -87,5 +87,6 @@ export class PostListComponent implements OnInit {
   ngOnDestroy() {
     this.postsSub && this.postsSub.unsubscribe();
     this.authStatusSubs && this.authStatusSubs.unsubscribe();
+    this.posts = [];
   }
 }

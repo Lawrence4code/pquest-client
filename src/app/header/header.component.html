@@ -1,10 +1,13 @@
 <mat-toolbar>
-    <span class='logo__section' routerLink="/"> <img src="../../assets/images/photo-camera.png" alt="PQuest Logo" >
+    <span class='logo__section' routerLink="/"> <img src="../../assets/images/photo-camera.png" alt="PQuest Logo">
         <h1> PQuest </h1>
     </span>
     <ul class="menu__action-bottons">
         <li>
             <a mat-button routerLink="/" routerLinkActive=""> Home </a>
+        </li>
+        <li *ngIf='userIsAuthenticated'>
+            <a mat-button routerLink="/posts" routerLinkActive="active-button"> My Posts </a>
         </li>
         <li *ngIf='userIsAuthenticated'>
             <a mat-button routerLink="/create" routerLinkActive="active-button"> Add New Post </a>
@@ -16,7 +19,7 @@
             <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent"> Signup </a>
         </li>
         <li class="menu__logout-botton" *ngIf='userIsAuthenticated'>
-            <button mat-button (click)="onLogout()"> Logout </button>
+            <button mat-button class="logout" (click)="onLogout()"> Logout </button>
         </li>
     </ul>
 </mat-toolbar>

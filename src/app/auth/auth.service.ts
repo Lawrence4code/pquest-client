@@ -24,7 +24,7 @@ export class AuthService {
     private httpClient: HttpClient,
     private router: Router,
     public dialog: MatDialog
-  ) {}
+  ) { }
 
   getToken() {
     return this.token;
@@ -46,7 +46,7 @@ export class AuthService {
     const authData: AuthData = { name: name, email: email, password: password };
     return this.httpClient.post(`${BACKEND_URL}/signup`, authData).subscribe(
       () => {
-        this.router.navigate(["/"]);
+        this.router.navigate(["/posts"]);
         this.openDialog();
       },
       error => {
@@ -108,7 +108,7 @@ export class AuthService {
               now.getTime() + expiresInDuration * 1000
             );
             this.saveAuthData(token, expirationDate, this.userId);
-            this.router.navigate(["/"]);
+            this.router.navigate(["/posts"]);
           }
         },
         error => {

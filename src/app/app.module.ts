@@ -13,6 +13,8 @@ import { AngularMaterialModule } from "./angular-material.module";
 import { PostsModule } from "./posts/posts.module";
 import { MessageComponent } from "./message/message.component";
 import { PostModalComponent } from "./post-modal/post-modal.component";
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { PostModalComponent } from "./post-modal/post-modal.component";
     HeaderComponent,
     ErrorComponent,
     MessageComponent,
-    PostModalComponent
+    PostModalComponent,
+    LandingPageComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
